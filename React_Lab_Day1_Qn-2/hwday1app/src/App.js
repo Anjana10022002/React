@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+function Profilecard() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="profile-card">
+      <img
+        src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZSUyMGNhcmR8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+        alt="Profile"
+        className="profile-image"
+      />
+      <h2 className="profile-name">John Doe</h2>
+      <p className="profile-bio">
+        A passionate developer with a love for creating intuitive user experiences.
+      </p>
+      <button className="follow-button">Follow</button>
     </div>
   );
 }
-
-export default App;
+export default Profilecard;
