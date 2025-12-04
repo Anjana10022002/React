@@ -6,12 +6,4 @@ function Profilecard() {
         alt="Profile"
         className="profile-image"
       />
-      <h2 className="profile-name">John Doe</h2>
-      <p className="profile-bio">
-        A passionate developer with a love for creating intuitive user experiences.
-      </p>
-      <button className="follow-button">Follow</button>
-    </div>
-  );
-}
-export default Profilecard;
+      
