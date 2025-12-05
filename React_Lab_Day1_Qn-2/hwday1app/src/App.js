@@ -38,5 +38,4 @@ function ProfileCard({
     </div>
   );
 }
-
 export default ProfileCard;
