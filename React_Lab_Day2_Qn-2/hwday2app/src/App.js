@@ -1,11 +1,19 @@
 function foodList(){
   let food = ['Pizza', 'Burger', 'Pasta', 'Salad', 'Sushi'];
+
+function showMessage(message) {
+  document.getElementById("message").innerText = message;
+}
+
   return (
-    <ul>
-      {food.map((item, index) => <li key={index}>{item}  
-        <button onClick={()=>{document.write(`I Love ${item}`)}}>Click</button>
-      </li>  )}
-    </ul>
-  )
+    <div>
+      <ul>
+        {food.map((item, index) => <li key={index}>{item}   
+          <button onClick={()=>{showMessage(`I Love ${item}`) }}>Click</button>
+        </li>  )}
+      </ul>
+      <p id="message"></p>
+    </div>
+  );  
 }
 export default foodList;
