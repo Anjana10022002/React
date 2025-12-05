@@ -7,6 +7,7 @@ function showMessage(message) {
 
   return (
     <div>
+      <h3> Select a food that you love!</h3>
       <ul>
         {food.map((item, index) => <li key={index}>{item}   
           <button onClick={()=>{showMessage(`I Love ${item}`) }}>Click</button>
