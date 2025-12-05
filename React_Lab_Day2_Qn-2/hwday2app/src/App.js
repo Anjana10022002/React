@@ -4,7 +4,6 @@ function foodList(){
 function showMessage(message) {
   document.getElementById("message").innerText = message;
 }
-
   return (
     <div>
       <h3> Select a food that you love!</h3>
