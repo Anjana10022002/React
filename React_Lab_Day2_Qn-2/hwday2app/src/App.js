@@ -2,7 +2,7 @@ function foodList(){
   let food = ['Pizza', 'Burger', 'Pasta', 'Salad', 'Sushi'];
 
 function showMessage(message) {
-  document.getElementById("message").innerText = message;
+  document.getElementById("message").innerHTML = message;
 }
   return (
     <div>
