@@ -9,7 +9,7 @@ function welcome() {
       <img src='https://cdn-icons-png.flaticon.com/512/919/919851.png'></img>
     </div>
 
-  )`;
+  );
 }
 
 
