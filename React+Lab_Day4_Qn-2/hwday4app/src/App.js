@@ -5,4 +5,8 @@ function App(){
     console.log("Welcome message displayed.");
 }, []);
 return (
-    
+    <div>
+      <h1>Hello, user! Welcome to our site.</h1>
+    </div>
+  );
+}
