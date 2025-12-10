@@ -1,8 +1,15 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import React, { useEffect } from "react";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+function App() {
+  useEffect(() => {
+    console.log("Welcome message displayed.");
+  }, []);
+
+  return (
+    <div style={{ textAlign: "center", marginTop: "40px", fontSize: "24px" }}>
+      Hello, user! Welcome to our site.
+    </div>
+  );
+}
+
+export default App;
