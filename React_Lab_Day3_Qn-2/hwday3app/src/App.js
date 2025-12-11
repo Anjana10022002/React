@@ -9,6 +9,7 @@ function App() {
         if (task.trim() === "") return;
 
         setTasks([...tasks, task]);
+        setMessage("Task added: ${task}!");
 }
 
 
