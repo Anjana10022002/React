@@ -15,6 +15,11 @@ function App() {
 };
 
 return (
+    <div className="container d-flex justify-content-center align-items-center vh-100"
+      style={{ backgroundColor: bgColor }}>
+        
+
+    </div>
 
 
 
