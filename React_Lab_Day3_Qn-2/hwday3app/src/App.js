@@ -5,6 +5,10 @@ function App() {
     const [tasks, setTasks] = useState([]);
     const [message, setMessage] = useState("Add a task to ge strated!");
     const [bgColor, setBgColor] = useState("white");
+    const handleAddTask = () => {
+        if (task.trim() === "") return;
+
+        setTasks([...tasks, task]);
 }
 
 
