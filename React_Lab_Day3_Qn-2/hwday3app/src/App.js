@@ -10,7 +10,11 @@ function App() {
 
         setTasks([...tasks, task]);
         setMessage("Task added: ${task}!");
-}
+        setTask("");
+        setBgColor("lightblue");
+};
+
+return (
 
 
 
