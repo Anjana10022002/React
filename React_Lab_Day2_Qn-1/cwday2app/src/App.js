@@ -24,6 +24,7 @@ function PersonalInfo(){
     <div>
       <p className="btn btn-primary">Show Enthusiasm</p>
     </div>
+    
     </>
     
   )
