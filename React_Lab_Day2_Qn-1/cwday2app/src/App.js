@@ -7,6 +7,9 @@ function PersonalInfo(){
   for( let i= 0; i < hobbies.length; i++){
     hobbieList.push(<li>{hobbies[i]}</li>)
   }
+  function button(){
+    
+  }
   return(
     <>
     <div className="container text-center bg-light m-auto p-5 mx-auto w-50 border border-dark mt-5">
@@ -26,7 +29,7 @@ function PersonalInfo(){
     </div>
 
     </>
-    
+
     
   )
 }
