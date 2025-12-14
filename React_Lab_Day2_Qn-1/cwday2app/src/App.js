@@ -22,9 +22,9 @@ function PersonalInfo(){
       {hobbies.map((item)=>{return <ul><li>{item}</li></ul>})}
     </div>
     <div>
-      <p className="btn btn-primary">Show Enthusiasm</p>
+      <p className="btn btn-primary" onClick={()=>}>Show Enthusiasm</p>
     </div>
-    
+
     </>
     
   )
