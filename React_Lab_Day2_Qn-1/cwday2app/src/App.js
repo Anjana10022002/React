@@ -7,8 +7,13 @@ function PersonalInfo(){
   for( let i= 0; i < hobbies.length; i++){
     hobbieList.push(<li>{hobbies[i]}</li>)
   }
+  const hobby = "Hello from React! I love my hobbies! ";
+  const headingColor = "lightblue";
   function button(){
-    
+    document.getElementById("hobbyHeading").innerHTML = hobby;
+    document.getElementById("hobbyHeading").style.color = headingColor;
+
+
   }
   return(
     <>
@@ -25,7 +30,7 @@ function PersonalInfo(){
       {hobbies.map((item)=>{return <ul><li>{item}</li></ul>})}
     </div>
     <div>
-      <p className="btn btn-primary" onClick={()=>}>Show Enthusiasm</p>
+      <p className="btn btn-primary" onClick={button()}>Show Enthusiasm</p>
     </div>
 
     </>
