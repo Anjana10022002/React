@@ -21,6 +21,9 @@ function PersonalInfo(){
       <p>Displaying hobby list using map function</p>
       {hobbies.map((item)=>{return <ul><li>{item}</li></ul>})}
     </div>
+    <div>
+      <p className="btn btn-primary">Show Enthusiasm</p>
+    </div>
     </>
     
   )
