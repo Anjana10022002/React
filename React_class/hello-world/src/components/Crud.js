@@ -1,98 +1,171 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../Navbar";
-import PostListItem from "./PostListItem";
+import React, { useState } from "react";
+import Navbar from './Navbar';
 
-function ListPosts() {
-  const [allPosts, setAllPosts] = useState([]); // Store all the fetched posts from the API
-  const [filteredPosts, setFilteredPosts] = useState([]); // Store the filtered posts based on search term
-  const [SearchTerm, setSearchTerm] = useState("");
-  let navigate = useNavigate();
+function Crud() {
+    var [ items, setItems ] = useState ([
+        { id : 1, name : "John" },
+        { id : 2, name : "David" },
+        { id : 3, name : "William" }
+]);
 
-  const handleSearchInputChange = (event) => {
+const [itemName, setItemName ] = useState(" ");
+
+const [editingItemId, setEditingItemId] = useState(null);
+const [editedItemName, setEditedItemName] = useState("");
+const [searchTerm, setSearchTerm] = useState("");
+
+const handleInputChange = (event ) => {
+    setItemName(event.target.value);
+};
+
+const handleSubmit = ( event ) => {
     event.preventDefault();
-    setSearchTerm(event.target.value);
+    var x = items.length+1;
+    var newItem = {
+        id : x,
+        name : itemName
+        };
+    setItems([...items, newItem]);
+    setItemName(" ");
+    };
+
+const handleDelete = (id) => {
+    const filteredItems = items.filter( (item) => item.id !== id);
+    setItems(filteredItems);
+};
+
+const handleEditItem = (item) => {
+    setEditingItemId(item.id);
+    setEditedItemName(item.name);
   };
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    if (SearchTerm.trim() === "") {
-      // If the search input is empty, reset the filteredPosts state.
-      setFilteredPosts(allPosts);
-    } else {
-      // Otherwise, filter the posts based on the search term.
-      var filteredItems = allPosts.filter((item) =>
-        item.title.toLowerCase().includes(SearchTerm.toLowerCase())
-      );
-      setFilteredPosts(filteredItems);
+  const handleSaveItem = () => {
+    if (editedItemName.trim() !== "") {
+      const updatedItems = items.map((item) => {
+        if (item.id === editingItemId) {
+          return { ...item, name: editedItemName };
+        }
+        return item;
+      });
+      setItems(updatedItems);
+      setEditingItemId(null);
     }
   };
 
-  function fetchPosts() {
-    axios
-      .get('https://demo-blog.mashupstack.com/api/posts')
-      .then((response) => {
-        setAllPosts(response.data);
-        setFilteredPosts(response.data); // Initialize filteredPosts with all the fetched posts
-      });
-  }
+  const handleCancelEdit = () => {
+    setEditingItemId(null);
+    setEditedItemName("");
+  };
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
 
-  return (
+  const handleDeleteItem = (itemId) => {
+    const updatedItems = items.filter((item) => item.id !== itemId);
+    setItems(updatedItems);
+  };
+
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    const filteredItems = items.filter((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setItems(filteredItems);
+};
+
+const handleResetSearch = () => {
+    setSearchTerm("");
+};
+
+return (
     <div>
-      <Navbar />
-      <br />
-      <br />
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8">
-            <form>
-              <label>Search Blog: </label>
-              <input
-                type="text"
-                value={SearchTerm}
-                onChange={handleSearchInputChange}
-              />{" "}
-              &nbsp;
-              <button
-                className="btn btn-small btn-success"
-                type="button"
-                onClick={handleSearch}
-              >
-                Search
-              </button>
-              &nbsp;
-            </form>
-          </div>
+    <div> <Navbar/> </div><br/>
+    <div className = "container ">
+      <div className = "row" >
+          <div className= "col-md-8">
+        <h2>CRUD</h2>
+        <form onSubmit={handleSubmit} >
+            <label> Enter Name </label>
+            <input type="text" value={itemName} onChange={handleInputChange}/>
+            <button className="btn btn-small btn-success" type="submit"> Add </button>
+        </form>
         </div>
-      </div>
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <h1 className="text-center my-4">Blog</h1>
-          </div>
         </div>
-        <div className="row">
-          <div className="col-8 offset-2">
-            <Link to="/blog/posts/create" className="btn btn-info mb-2">
-              Create Post
-            </Link>
-            {filteredPosts.length === 0 ? (
-              <p>No matching posts found.</p>
-            ) : (
-              filteredPosts.map((post) => (
-                <PostListItem key={post.id} post={post} refresh={fetchPosts} />
-              ))
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+        </div><br/>
+<div className="container">
+<table className="table table-bordered table-dark">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>
+                  {editingItemId === item.id ? (
+                    <input
+                      type="text"
+                      value={editedItemName}
+                      onChange={(e) => setEditedItemName(e.target.value)}
+                    />
+                  ) : (
+                    item.name
+                  )}
+                </td>
+                <td>
+                  {editingItemId === item.id ? (
+                    <>
+                      <button
+                        className="btn btn-primary"
+                        onClick={handleSaveItem}
+                      >
+                        Save
+                      </button>
+                      <button
+                        className="btn btn-secondary"
+                        onClick={handleCancelEdit}
+                      >
+                        Cancel
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => handleEditItem(item)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => handleDeleteItem(item.id)}
+                      >
+                        Delete
+                      </button>
+                    </>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+</div>
+<div className="container">
+                <div className="row">
+                    <div className="col-md-8">
+                        <form onSubmit={handleSearch}>
+                            <label>Search Name: </label>
+                            <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />&nbsp;
+                            <button className="btn btn-small btn-success" type="submit">Search</button>&nbsp;
+                        </form>
+                    </div>
+                </div>
+            </div>
+</div>
+);
 }
 
-export default ListPosts;
+export default Crud;
