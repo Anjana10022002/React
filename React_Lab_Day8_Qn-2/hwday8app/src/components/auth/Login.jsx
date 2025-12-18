@@ -6,21 +6,25 @@ function Login() {
     var [password, setPassword] = useState('');
     var [errorMessage, setErrorMessage] = useState('');
     function attemptLogin() {
-        axios.post('https://demo-blog.mashupstack.com/api/login',{
-            email:email,
-            password:password
-        }).then(response=>{
-            setErrorMessage('')
-            console.log(response.data.token)
-        }).catch(error=>{
-            if(error.response.data.errors){
-                setErrorMessage(Object.values(error.response.data.errors).join(' '))
-            }else if(error.response.data.message){
-                setErrorMessage(error.response.data.message)
-            }else{
-                setErrorMessage('Failed to login user. Please contact admin')
-            }
-        })
+  axios
+    .post("https://worksheet-auth.mashupstack.com/login", {
+      email: email,
+      password: password,
+    })
+    .then((response) => {
+      setErrorMessage("");
+      alert("Successfully Logged In");
+      console.log("Token:", response.data.token);
+    })
+    .catch((error) => {
+      if (error.response && error.response.data.errors) {
+        setErrorMessage(Object.values(error.response.data.errors).join(" "));
+      } else if (error.response && error.response.data.message) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        setErrorMessage("Failed to login user. Please contact admin");
+      }
+    });
     }
     return (<div>
         <Navbar/>
