@@ -1,46 +1,14 @@
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
-    return <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div className="navbar-brand">
-            <h4></h4>
-        </div>
-        <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        >
-            <span className="navbar-toggler-icon"></span>
-        </button>
-        <div
-        className="collapse navbar-collapse mr-auto"
-        id="navbarNav"
-        style={{ float: "left" }}
-        >
-            <ul className="navbar-nav ml-auto" style={{ color: "#ffffff" }}>
-                <li className="nav-item">
-                    <NavLink 
-                    to={"/register"} 
-                    className={
-                        'nav-link '+
-                        (status => status.isActive ? 'active' : '')
-                    }>
-                        Register
-                    </NavLink>
-                    <navlink to={"/login"} className={
-                        'nav-link '+
-                        (status => status.isActive ? 'active' : '')
-                    }>
-                        Login
-                    </navlink>  
-                </li>
-            </ul>
-        </div>
-    </nav>;
+    return (
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <h2 className="navbar-brand">My App</h2>
+            <div className="links">
+                <NavLink to='/login' className="nav-link">Login</NavLink>     
+                <NavLink to='/register' className="nav-link">Register</NavLink> 
+            </div>
+        </nav>
+    );
 }
-
 export default Navbar;

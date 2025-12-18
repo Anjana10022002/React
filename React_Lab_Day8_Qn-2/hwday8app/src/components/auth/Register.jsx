@@ -4,76 +4,95 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 
 function Register() {
-    var [name, setName] = useState('');
-    var [email, setEmail] = useState('');
-    var [password, setPassword] = useState('');
-    var [passwordConf, setPasswordConf] = useState('');
-    var [errorMessage, setErrorMessage] = useState('');
-    var navigate = useNavigate();
-    function registerUser(){
-        var user = {
-            name: name,
-            email: email,
-            password: password,
-            password_confirmation: passwordConf
-        }
-        axios.post('https://demo-blog.mashupstack.com/api/register',user).then(response=>{
-            setErrorMessage('');
-            navigate('/');
-        }).catch(error=>{
-            if(error.response.data.errors){
-                setErrorMessage(Object.values(error.response.data.errors).join(' '));
-            }else{
-                setErrorMessage('Failed to connect to api');
-            }
-        })
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConf, setPasswordConf] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate();
+
+  function registerUser() {
+    // ✅ Password match check
+    if (password !== passwordConf) {
+      setErrorMessage("Passwords do not match");
+      return;
     }
-    return <div>
-        <Navbar/>
-        <div className="container">
-            <div className="row">
-                <div className="col-8 offset-2">
-                    <h1>Register</h1>
-                    {errorMessage?<div className="alert alert-danger">{errorMessage}</div>:''}
-                    <div className="form-group">
-                        <label>Name:</label>
-                        <input type="text"
-                        className="form-control"
-                        value={name}
-                        onInput={(event)=>setName(event.target.value)}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Email:</label>
-                        <input type="text"
-                        className="form-control"
-                        value={email}
-                        onInput={(event)=>setEmail(event.target.value)}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Password:</label>
-                        <input type="password"
-                        className="form-control"
-                        value={password}
-                        onInput={(event)=>setPassword(event.target.value)}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Confirm Password:</label>
-                        <input type="password"
-                        className="form-control"
-                        value={passwordConf}
-                        onInput={(event)=>setPasswordConf(event.target.value)}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <button className="btn btn-primary float-right" onClick={registerUser}>Submit</button>
-                    </div>
-                </div>
+
+    axios
+      .post("https://worksheet-auth.mashupstack.com/register", {
+        user_name: name,
+        email: email,
+        password: password,
+      })
+      .then(() => {
+        alert("Registration Successful"); // ✅ ALERT
+        navigate("/login");               // ✅ REDIRECT
+      })
+      .catch((error) => {
+        if (error.response && error.response.data) {
+          setErrorMessage("Registration failed");
+        } else {
+          setErrorMessage("Failed to connect to API");
+        }
+      });
+  }
+
+  return (
+    <>
+      <Navbar />
+
+      <div className="container mt-4">
+        <div className="row">
+          <div className="col-8 offset-2">
+            <h1>Register</h1>
+
+            {errorMessage && (
+              <div className="alert alert-danger">{errorMessage}</div>
+            )}
+
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                className="form-control"
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
+
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                className="form-control"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                className="form-control"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Confirm Password</label>
+              <input
+                type="password"
+                className="form-control"
+                onChange={(e) => setPasswordConf(e.target.value)}
+              />
+            </div>
+
+            <button className="btn btn-primary mt-3" onClick={registerUser}>
+              Submit
+            </button>
+          </div>
         </div>
-    </div>
+      </div>
+    </>
+  );
 }
 
 export default Register;
