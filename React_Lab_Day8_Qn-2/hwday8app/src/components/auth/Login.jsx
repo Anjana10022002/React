@@ -14,8 +14,8 @@ function Login() {
         password: password,
       })
       .then((response) => {
-        alert("Successfully Logged In");        // ✅ ALERT
-        console.log("Token:", response.data.token); // ✅ PRINT TOKEN
+        alert("Successfully Logged In");
+        console.log("Token:", response.data.token);
         setErrorMessage("");
       })
       .catch((error) => {
