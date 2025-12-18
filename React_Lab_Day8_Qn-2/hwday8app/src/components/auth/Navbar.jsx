@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
     return <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
         <div className="navbar-brand">
-            <h4>My app</h4>
+            <h4></h4>
         </div>
         <button
         className="navbar-toggler"
@@ -31,6 +31,12 @@ function Navbar() {
                     }>
                         Register
                     </NavLink>
+                    <navlink to={"/login"} className={
+                        'nav-link '+
+                        (status => status.isActive ? 'active' : '')
+                    }>
+                        Login
+                    </navlink>  
                 </li>
             </ul>
         </div>
