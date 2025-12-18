@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Navbar from "../Navbar";
+import Navbar from "./Navbar";
 
 function Login() {
     var [email, setEmail] = useState('');
