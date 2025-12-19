@@ -1,1 +1,1 @@
-
+from "./components/Counter";
