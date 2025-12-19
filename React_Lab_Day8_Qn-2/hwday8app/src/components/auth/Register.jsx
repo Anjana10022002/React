@@ -13,7 +13,6 @@ function Register() {
   const navigate = useNavigate();
 
   function registerUser() {
-    // ✅ Password match check
     if (password !== passwordConf) {
       setErrorMessage("Passwords do not match");
       return;
@@ -26,8 +25,8 @@ function Register() {
         password: password,
       })
       .then(() => {
-        alert("Registration Successful"); // ✅ ALERT
-        navigate("/login");               // ✅ REDIRECT
+        alert("Registration Successful");
+        navigate("/login");
       })
       .catch((error) => {
         if (error.response && error.response.data) {
