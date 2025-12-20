@@ -1,0 +1,18 @@
+// function App() {
+//   return (
+//     <div>
+//       <h1>Hello World</h1>
+//     </div>
+//   );
+// }
+// export default App;
+
+function App() {
+  let greeting = "Hello World";
+  return (
+    <div>
+    <h1>{greeting}</h1>
+    </div>
+  );
+}
+export default App;
