@@ -7,11 +7,21 @@
 // }
 // export default App;
 
+// function App() {
+//   let greeting = "Hello World";
+//   return (
+//     <div>
+//     <h1>{greeting}</h1>
+//     </div>
+//   );
+// }
+// export default App;
+
 function App() {
-  let greeting = "Hello World";
+  let greeting = "World";
   return (
     <div>
-    <h1>{greeting}</h1>
+    <h1>Hello {greeting}</h1>
     </div>
   );
 }
