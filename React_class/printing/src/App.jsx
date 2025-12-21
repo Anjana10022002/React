@@ -13,16 +13,63 @@
 // }
 // export default App;
 
+// import "./App.css";
+// import image from "./assets/download.jpeg";
+// function App() {
+//   let greetings = ["Good Morning", "Good Afternoon","Good Evening", "Good Night", "Good Day"];
+ 
+//   return (
+//        <div>
+//            <img src={image}/>
+//            {greetings.map((item)=>{return <p>{item}</p>})}  
+//       </div>
+//   );
+// }
+// export default App;
+
+
+// import "./App.css";
+// import image from "./assets/download.jpeg";
+// function App() {
+//      const fruits = ["apple", "banana", "cherry", "mango"];
+//      const fruitList = [ ];
+//   for( let i=0; i < fruits.length; i++) {
+//        fruitList.push(<li key ={i}> {fruits[i]} </li> );
+//  }
+// return (
+//          <div>
+//             <h1>Fruit list</h1>
+//             <ul>{fruitList}</ul>
+//       </div>
+//   );
+// }
+// export default App;
+
+
+// import "./App.css";
+// import image from "./assets/download.jpeg";
+// function App() {
+//   let greetings = [{name:"Vijay",location:"Kochi"},{name:"Rajesh", location:"Delhi"}];
+ 
+//   return (
+//          <div>
+//               <img src={image}/>
+//               {greetings[1].name}
+//          </div>
+//   );
+// }
+// export default App;
+
 import "./App.css";
 import image from "./assets/download.jpeg";
 function App() {
-  let greetings = ["Good Morning", "Good Afternoon","Good Evening", "Good Night", "Good Day"];
+  let students = [{name:"Vijay",location:"Kochi"},{name:"Rajesh", location:"Delhi"}];
  
   return (
-       <div>
-           <img src={image}/>
-           {greetings.map((item)=>{return <p>{item}</p>})}  
-      </div>
+        <div>
+            <img src={image}/>
+             {students.map((item)=>{return <p>{item.name} is from {item.location}</p>})}
+        </div>
   );
 }
 export default App;
