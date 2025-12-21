@@ -60,16 +60,27 @@
 // }
 // export default App;
 
-import "./App.css";
-import image from "./assets/download.jpeg";
-function App() {
-  let students = [{name:"Vijay",location:"Kochi"},{name:"Rajesh", location:"Delhi"}];
+// import "./App.css";
+// import image from "./assets/download.jpeg";
+// function App() {
+//   let students = [{name:"Vijay",location:"Kochi"},{name:"Rajesh", location:"Delhi"}];
  
-  return (
-        <div>
-            <img src={image}/>
-             {students.map((item)=>{return <p>{item.name} is from {item.location}</p>})}
-        </div>
-  );
-}
+//   return (
+//         <div>
+//             <img src={image}/>
+//              {students.map((item)=>{return <p>{item.name} is from {item.location}</p>})}
+//         </div>
+//   );
+// }
+// export default App;
+
+import React from 'react';
+
+function App(){
+  var user = 'John';
+      return (
+    <div>
+      <input type='text' value={user} />
+    </div>
+)}
 export default App;
