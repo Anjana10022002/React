@@ -18,20 +18,45 @@
 // export default App;
 
 
+// import React, { useState } from 'react';
+
+// function App() {
+//   const [name, setName] = useState('');
+
+//   function handleNameChange(event) {
+//     setName(event.target.value);
+//   }
+
+//   return (
+//     <div>
+//       <label>Name:</label>
+//       <input type="text" value={name} onChange={handleNameChange} />
+//       <p>Hello, {name}!</p>
+//     </div>
+//   );
+// }
+
+// export default App;
+
 import React, { useState } from 'react';
+import './App.css';
 
 function App() {
   const [name, setName] = useState('');
 
-  function handleNameChange(event) {
-    setName(event.target.value);
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Hello, ${name}!`);
+  };
 
   return (
-    <div>
-      <label>Name:</label>
-      <input type="text" value={name} onChange={handleNameChange} />
-      <p>Hello, {name}!</p>
+    <div className="App">
+      <h1>Simple React Form</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Name:</label>
+        <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required/>
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }
