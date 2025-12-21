@@ -16,3 +16,24 @@
 // }
 
 // export default App;
+
+
+import React, { useState } from 'react';
+
+function App() {
+  const [name, setName] = useState('');
+
+  function handleNameChange(event) {
+    setName(event.target.value);
+  }
+
+  return (
+    <div>
+      <label>Name:</label>
+      <input type="text" value={name} onChange={handleNameChange} />
+      <p>Hello, {name}!</p>
+    </div>
+  );
+}
+
+export default App;
