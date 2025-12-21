@@ -96,13 +96,26 @@
 // )}
 // export default App;
 
-import React from 'react';
+// import React from 'react';
 
-function App(){
-  var user = { name : "Arun" , age : 20 }
-      return (
-    <div>
-      <input type="text" value={user.name} />
-    </div>
-)}
+// function App(){
+//   var user = { name : "Arun" , age : 20 }
+//       return (
+//     <div>
+//       <input type="text" value={user.name} />
+//     </div>
+// )}
+// export default App;
+
+function handleClick() {
+  console.log('Button was clicked!');
+}
+
+function App() {
+  return (
+    <button onClick={handleClick}>
+      Click me
+    </button>
+  );
+}
 export default App;
