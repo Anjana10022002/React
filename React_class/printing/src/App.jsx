@@ -72,15 +72,37 @@
 //         </div>
 //   );
 // }
+// // export default App;
+
+// import React from 'react';
+
+// function App(){
+//   var user = 'John';
+//       return (
+//     <div>
+//       <input type='text' value={user} />
+//     </div>
+// )}
+// export default App;
+
+// import React from 'react';
+
+// function App(){
+//   var user = ["John" , "William", "David"];
+//       return (
+//     <div>
+//       <input type="text" value={user[1]} />
+//     </div>
+// )}
 // export default App;
 
 import React from 'react';
 
 function App(){
-  var user = 'John';
+  var user = { name : "Arun" , age : 20 }
       return (
     <div>
-      <input type='text' value={user} />
+      <input type="text" value={user.name} />
     </div>
 )}
 export default App;
