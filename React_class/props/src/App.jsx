@@ -26,20 +26,40 @@
 
 // export default App;
 
-import React, {useState} from 'react';
+// import React, {useState} from 'react';
+// import Child from './child';
+
+// function App() {
+//    const [count, setCount] = useState(0);
+//    function incrementCount(){
+//   setCount(count + 1);
+//     }
+//    return (
+//        <div>
+//             <h1>Count: { count } </h1>
+//             <Child increment={incrementCount} />
+//       </div>
+//   );
+// }
+  
+// export default App;
+
+
+import React , { useState } from 'react';
 import Child from './child';
 
 function App() {
-   const [count, setCount] = useState(0);
-   function incrementCount(){
-  setCount(count + 1);
+    const [count, setCount ] = useState(0);
+   function incrementCount () {
+    setCount(count+1);
     }
-   return (
+
+    return(
        <div>
-            <h1>Count: { count } </h1>
-            <Child increment={incrementCount} />
+           <p>Count: { count } </p>
+           <Child increment= { incrementCount } />
       </div>
-  );
+    );
 }
-  
+
 export default App;

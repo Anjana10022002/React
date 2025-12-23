@@ -25,11 +25,24 @@
 // }
 // export default Child;
 
+// import React from 'react';
+
+// function Child(props){
+//     return( 
+//         <button onClick={props.increment}> Increment count </button>
+//     )
+// }
+// export default Child;
+
 import React from 'react';
 
-function Child(props){
-    return( 
-        <button onClick={props.increment}> Increment count </button>
-    )
+function Child(props) {
+    function handleClick() {
+           props.increment()
+    }
+     return (
+         <button onClick = {handleClick} >Increment Count </button>
+      );
 }
+
 export default Child;
