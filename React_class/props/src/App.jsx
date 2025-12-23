@@ -45,20 +45,41 @@
 // export default App;
 
 
-import React , { useState } from 'react';
+// import React , { useState } from 'react';
+// import Child from './child';
+
+// function App() {
+//     const [count, setCount ] = useState(0);
+//    function incrementCount () {
+//     setCount(count+1);
+//     }
+
+//     return(
+//        <div>
+//            <p>Count: { count } </p>
+//            <Child increment= { incrementCount } />
+//       </div>
+//     );
+// }
+
+// export default App;
+
+
+import React, { useState } from 'react';
 import Child from './child';
 
 function App() {
-    const [count, setCount ] = useState(0);
-   function incrementCount () {
-    setCount(count+1);
-    }
+  const [ dataFromChild, setDataFromChild] = useState(null);
+  
+  const handleDataFromChild = (data) => {
+    setDataFromChild(data);
+}
 
-    return(
-       <div>
-           <p>Count: { count } </p>
-           <Child increment= { incrementCount } />
-      </div>
+  return(
+      <div>
+            <Child onDataFromChild = {handleDataFromChild} />
+            <p> Data from child component : {dataFromChild} </p>
+    </div>
     );
 }
 

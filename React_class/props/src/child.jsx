@@ -34,15 +34,34 @@
 // }
 // export default Child;
 
-import React from 'react';
+// import React from 'react';
+
+// function Child(props) {
+//     function handleClick() {
+//            props.increment()
+//     }
+//      return (
+//          <button onClick = {handleClick} >Increment Count </button>
+//       );
+// }
+
+// export default Child;
+
+import React, { useState } from 'react';
 
 function Child(props) {
-    function handleClick() {
-           props.increment()
-    }
-     return (
-         <button onClick = {handleClick} >Increment Count </button>
-      );
+  const [data, setData] = useState(null);
+  const handleClick = () => {
+       const newData = " mashup stack";
+        setData(newData);
+        props.onDataFromChild(newData);
+  }
+   return (
+       <div>
+           <button onClick={handleClick}> click me </button>
+           <p> Data in child component : {data}</p>
+     </div>
+  );
 }
 
 export default Child;
