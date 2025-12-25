@@ -49,7 +49,6 @@ function App() {
 
   useEffect(() => {
     console.log(`Count changed to ${count}`);
-    // Do something here after the count state value changes
   }, [count]);
 
   return (
