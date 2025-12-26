@@ -1,35 +1,79 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../Navbar";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function Register() {
+    var [name, setName] = useState('');
+    var [email, setEmail] = useState('');
+    var [password, setPassword] = useState('');
+    var [passwordConf, setPasswordConf] = useState('');
+    var [errorMessage, setErrorMessage] = useState('');
+    var navigate = useNavigate();
+    function registerUser(){
+        var user = {
+            name: name,
+            email: email,
+            password: password,
+            password_confirmation: passwordConf
+        }
+        axios.post('https://demo-blog.mashupstack.com/api/register',user).then(response=>{
+            setErrorMessage('');
+            navigate('/');
+        }).catch(error=>{
+            if(error.response.data.errors){
+                setErrorMessage(Object.values(error.response.data.errors).join(' '));
+            }else{
+                setErrorMessage('Failed to connect to api');
+            }
+        })
+    }
+    return <div>
+        <Navbar/>
+        <div className="container">
+            <div className="row">
+                <div className="col-8 offset-2">
+                    <h1>Register</h1>
+                    {errorMessage?<div className="alert alert-danger">{errorMessage}</div>:''}
+                    <div className="form-group">
+                        <label>Name:</label>
+                        <input type="text"
+                        className="form-control"
+                        value={name}
+                        onInput={(event)=>setName(event.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Email:</label>
+                        <input type="text"
+                        className="form-control"
+                        value={email}
+                        onInput={(event)=>setEmail(event.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password:</label>
+                        <input type="password"
+                        className="form-control"
+                        value={password}
+                        onInput={(event)=>setPassword(event.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Confirm Password:</label>
+                        <input type="password"
+                        className="form-control"
+                        value={passwordConf}
+                        onInput={(event)=>setPasswordConf(event.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <button className="btn btn-primary float-right" onClick={registerUser}>Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 }
 
-export default App
+export default Register;
