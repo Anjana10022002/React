@@ -7,3 +7,11 @@ function Signup() {
     var {password, setPassword} = useState("");
     var {passwordConfirm, setPasswordConfirm} = useState("");
     var navigate = useNavigate();
+    function signupUser(){
+        var user = {
+            name: name,
+            email: email,
+            password: password,
+            passwordConfirm: passwordConfirm
+        }
+    }
