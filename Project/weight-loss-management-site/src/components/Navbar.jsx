@@ -23,7 +23,7 @@ function Navbar() {
 
           <li className="breadcrumb-item">
             <NavLink to="/records" className="text-light text-decoration-none">
-              Records
+              Weight list
             </NavLink>
           </li>
 

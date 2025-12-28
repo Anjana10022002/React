@@ -11,6 +11,9 @@ function WeightList() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
+  const [editingId, setEditingId] = useState(null);
+  const [editedWeight, setEditedWeight] = useState("");
+
   useEffect(() => {
     if (!user) {
       navigate("/login");
@@ -29,6 +32,43 @@ function WeightList() {
     setCurrentPage(page);
   };
 
+  const deleteRecord = (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this record?"
+    );
+    if (!confirmDelete) return;
+
+    const allWeights = JSON.parse(localStorage.getItem("weights")) || {};
+    const updated = items.filter((item) => item.id !== id);
+
+    allWeights[user] = updated;
+    localStorage.setItem("weights", JSON.stringify(allWeights));
+    setItems(updated);
+  };
+
+  const startEdit = (item) => {
+    setEditingId(item.id);
+    setEditedWeight(item.name);
+  };
+
+  const saveEdit = () => {
+    const allWeights = JSON.parse(localStorage.getItem("weights")) || {};
+    const updated = items.map((item) =>
+      item.id === editingId ? { ...item, name: editedWeight } : item
+    );
+
+    allWeights[user] = updated;
+    localStorage.setItem("weights", JSON.stringify(allWeights));
+    setItems(updated);
+    setEditingId(null);
+    setEditedWeight("");
+  };
+
+  const cancelEdit = () => {
+    setEditingId(null);
+    setEditedWeight("");
+  };
+
   return (
     <>
       <Navbar />
@@ -40,25 +80,68 @@ function WeightList() {
             <tr>
               <th>Date</th>
               <th>Weight (kg)</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {currentItems.map((item) => (
               <tr key={item.id}>
                 <td>{item.date}</td>
-                <td>{item.name}</td>
+                <td>
+                  {editingId === item.id ? (
+                    <input
+                      type="number"
+                      value={editedWeight}
+                      onChange={(e) => setEditedWeight(e.target.value)}
+                    />
+                  ) : (
+                    item.name
+                  )}
+                </td>
+                <td>
+                  {editingId === item.id ? (
+                    <>
+                      <button
+                        className="btn btn-success btn-sm mx-1"
+                        onClick={saveEdit}
+                      >
+                        Save
+                      </button>
+                      <button
+                        className="btn btn-secondary btn-sm"
+                        onClick={cancelEdit}
+                      >
+                        Cancel
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        className="btn btn-primary btn-sm mx-1"
+                        onClick={() => startEdit(item)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={() => deleteRecord(item.id)}
+                      >
+                        Delete
+                      </button>
+                    </>
+                  )}
+                </td>
               </tr>
             ))}
 
             {currentItems.length === 0 && (
               <tr>
-                <td colSpan="2">No records found</td>
+                <td colSpan="3">No records found</td>
               </tr>
             )}
           </tbody>
         </table>
 
-        {/* Pagination */}
         {totalPages > 1 && (
           <div className="d-flex justify-content-center">
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (

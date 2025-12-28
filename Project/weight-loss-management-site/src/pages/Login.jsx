@@ -35,12 +35,11 @@ function Login() {
     <div className="container">
       <div className="row">
         <div className="col-8 offset-2">
-          <h1>Login</h1>
-
+          <h2>Login</h2>
           {errorMessage && (
             <div className="alert alert-danger">{errorMessage}</div>
           )}
-
+          
           <div className="form-group">
             <label>Email:</label>
             <input
