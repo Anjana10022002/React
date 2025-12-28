@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 function Crud() {
   const navigate = useNavigate();
   const user = localStorage.getItem("loggedUser");
-
   var [items, setItems] = useState([]);
   const [itemName, setItemName] = useState(" ");
-
   const [editingItemId, setEditingItemId] = useState(null);
   const [editedItemName, setEditedItemName] = useState("");
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const [result, setResult] = useState(null);
 
   useEffect(() => {
     if (!user) {
@@ -87,12 +88,26 @@ function Crud() {
   setItems(updatedItems);
 };
 
-
   const saveToStorage = (updatedItems) => {
     const allWeights = JSON.parse(localStorage.getItem("weights")) || {};
     allWeights[user] = updatedItems;
     localStorage.setItem("weights", JSON.stringify(allWeights));
   };
+
+  const calculateWeightChange = () => {
+  if (!fromDate || !toDate) return;
+
+  const fromEntry = items.find(item => item.date === fromDate);
+  const toEntry = items.find(item => item.date === toDate);
+
+  if (!fromEntry || !toEntry) {
+    alert("Weight entry not found for selected date");
+    return;
+  }
+
+  const diff = toEntry.name - fromEntry.name;
+  setResult(diff);
+};
 
   return (
     <div className="container">
@@ -175,6 +190,26 @@ function Crud() {
           )}
         </tbody>
       </table>
+      <hr />
+      <h4>Weight Change</h4>
+
+      <label>From:</label>
+      <input type="date" value={fromDate} onChange={(event) => setFromDate(event.target.value)} />
+
+      <label>To:</label>
+      <input type="date" value={toDate} onChange={(event) => setToDate(event.target.value)} />
+
+      <button className="btn btn-info btn-sm" onClick={calculateWeightChange}>
+        Calculate
+      </button>
+
+      {result !== null && (
+        <p>
+          {result > 0
+            ? `Weight Gained: ${result} kg`
+            : `Weight Lost: ${Math.abs(result)} kg`}
+        </p>
+      )}
     </div>
   );
 }
