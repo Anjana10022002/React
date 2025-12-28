@@ -79,10 +79,14 @@ function Crud() {
   };
 
   const handleDeleteItem = (itemId) => {
-    const updatedItems = items.filter((item) => item.id !== itemId);
-    saveToStorage(updatedItems);
-    setItems(updatedItems);
-  };
+  const confirmDelete = window.confirm("Are you sure you want to delete this record?");
+  if (!confirmDelete) return;
+
+  const updatedItems = items.filter((item) => item.id !== itemId);
+  saveToStorage(updatedItems);
+  setItems(updatedItems);
+};
+
 
   const saveToStorage = (updatedItems) => {
     const allWeights = JSON.parse(localStorage.getItem("weights")) || {};
