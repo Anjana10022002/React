@@ -9,7 +9,7 @@ function WeightList() {
   const [items, setItems] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 3;
 
   const [editingId, setEditingId] = useState(null);
   const [editedWeight, setEditedWeight] = useState("");
@@ -92,7 +92,7 @@ function WeightList() {
                     <input
                       type="number"
                       value={editedWeight}
-                      onChange={(e) => setEditedWeight(e.target.value)}
+                      onChange={(event) => setEditedWeight(event.target.value)}
                     />
                   ) : (
                     item.name
@@ -143,20 +143,34 @@ function WeightList() {
         </table>
 
         {totalPages > 1 && (
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center align-items-center mt-3">
+            <button
+              className="btn btn-outline-primary btn-sm mx-1"
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage(currentPage - 1)}
+            >
+              Prev
+            </button>
+
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button
                 key={page}
                 className={`btn btn-sm mx-1 ${
-                  currentPage === page
-                    ? "btn-primary"
-                    : "btn-outline-primary"
+                  currentPage === page ? "btn-primary" : "btn-outline-primary"
                 }`}
                 onClick={() => goToPage(page)}
               >
                 {page}
               </button>
             ))}
+
+            <button
+              className="btn btn-outline-primary btn-sm mx-1"
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage(currentPage + 1)}
+            >
+              Next
+            </button>
           </div>
         )}
       </div>
