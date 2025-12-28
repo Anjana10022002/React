@@ -39,7 +39,7 @@ function Login() {
           {errorMessage && (
             <div className="alert alert-danger">{errorMessage}</div>
           )}
-          
+
           <div className="form-group">
             <label>Email:</label>
             <input
@@ -71,7 +71,7 @@ function Login() {
           style={{ color: "blue", cursor: "pointer" }}
           onClick={() => navigate("/")}
         >
-          Register here
+          Signup
         </span>
       </p>
     </div>

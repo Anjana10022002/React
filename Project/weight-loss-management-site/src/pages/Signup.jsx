@@ -94,7 +94,7 @@ function Signup() {
           style={{ color: "blue", cursor: "pointer" }}
           onClick={() => navigate("/login")}
         >
-          Login here
+          Login
         </span>
       </p>
     </div>
