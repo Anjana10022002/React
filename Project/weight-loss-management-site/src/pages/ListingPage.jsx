@@ -164,5 +164,18 @@ function WeightList() {
               </button>
             ))}
 
-           
+            <button
+              className="btn btn-outline-primary btn-sm mx-1"
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage(currentPage + 1)}
+            >
+              Next
+            </button>
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
+
 export default WeightList;
