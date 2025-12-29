@@ -38,7 +38,6 @@ function WeightLoss() {
   return (
     <>
       <Navbar />
-
       <div className="container mt-4">
         <h3>Weight Loss / Gain</h3>
 
@@ -48,7 +47,7 @@ function WeightLoss() {
             type="date"
             className="form-control"
             value={fromDate}
-            onChange={(e) => setFromDate(e.target.value)}
+            onChange={(event) => setFromDate(event.target.value)}
           />
         </div>
 
@@ -58,7 +57,7 @@ function WeightLoss() {
             type="date"
             className="form-control"
             value={toDate}
-            onChange={(e) => setToDate(e.target.value)}
+            onChange={(event) => setToDate(event.target.value)}
           />
         </div>
 

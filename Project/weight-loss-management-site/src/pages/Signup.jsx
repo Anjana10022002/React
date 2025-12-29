@@ -49,7 +49,7 @@ function Signup() {
               type="text"
               className="form-control"
               value={name}
-              onInput={(e) => setName(e.target.value)}
+              onChange={(event) => setName(event.target.value)}
             />
           </div>
 
@@ -59,7 +59,7 @@ function Signup() {
               type="text"
               className="form-control"
               value={email}
-              onInput={(e) => setEmail(e.target.value)}
+              onChange={(event) => setEmail(event.target.value)}
             />
           </div>
 
@@ -69,7 +69,7 @@ function Signup() {
               type="password"
               className="form-control"
               value={password}
-              onInput={(e) => setPassword(e.target.value)}
+              onChange={(event) => setPassword(event.target.value)}
             />
           </div>
 
@@ -79,7 +79,7 @@ function Signup() {
               type="password"
               className="form-control"
               value={passwordConfirm}
-              onInput={(e) => setPasswordConfirm(e.target.value)}
+              onChange={(event) => setPasswordConfirm(event.target.value)}
             />
           </div>
 

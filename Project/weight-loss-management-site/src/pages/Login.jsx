@@ -46,7 +46,7 @@ function Login() {
               type="text"
               className="form-control"
               value={email}
-              onInput={(e) => setEmail(e.target.value)}
+              onChange={(event) => setEmail(event.target.value)}
             />
           </div>
 
@@ -56,7 +56,7 @@ function Login() {
               type="password"
               className="form-control"
               value={password}
-              onInput={(e) => setPassword(e.target.value)}
+              onChange={(event) => setPassword(event.target.value)}
             />
           </div>
 

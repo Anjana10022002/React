@@ -16,7 +16,7 @@ body {
 }
 
 .navbar-brand h4 {
-  color: #fff;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -33,7 +33,7 @@ body {
 }
 
 .container {
-  max-width: 420px;           
+  max-width: 420px;
   background: #ffffff;
   padding: 28px;
   margin-top: 60px;
@@ -53,7 +53,6 @@ h1, h2, h3 {
   color: #222;
 }
 
-/* ===== Forms ===== */
 .form-group {
   margin-bottom: 16px;
 }
@@ -64,7 +63,6 @@ label {
   display: block;
 }
 
-/* Input fields */
 input.form-control,
 input[type="number"],
 input[type="date"] {
@@ -73,6 +71,9 @@ input[type="date"] {
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
+  background-color: #ffffff;
+  color: #333333;
+  caret-color: #333333;
 }
 
 input:focus {
@@ -81,7 +82,6 @@ input:focus {
   box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.15);
 }
 
-/* ===== Buttons (same width as inputs) ===== */
 button,
 .btn {
   width: 100%;
@@ -91,7 +91,6 @@ button,
   font-weight: 500;
 }
 
-/* Button colors */
 .btn-primary {
   background-color: #1976d2;
   border: none;
@@ -116,14 +115,12 @@ button,
   opacity: 0.92;
 }
 
-/* Small buttons inside tables */
 .table .btn {
   width: auto;
   padding: 6px 12px;
   font-size: 13px;
 }
 
-/* ===== Alerts ===== */
 .alert {
   border-radius: 8px;
   font-size: 14px;
@@ -131,7 +128,6 @@ button,
   text-align: center;
 }
 
-/* ===== Tables ===== */
 .table {
   margin-top: 20px;
 }
@@ -145,7 +141,6 @@ button,
   vertical-align: middle;
 }
 
-/* ===== Text below forms (Login/Register links) ===== */
 p {
   text-align: center;
   margin-top: 16px;
@@ -155,13 +150,11 @@ p span {
   font-weight: 500;
 }
 
-/* ===== Pagination ===== */
 .d-flex.justify-content-center button {
   width: auto;
   padding: 6px 12px;
 }
 
-/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .container {
     margin-top: 30px;
