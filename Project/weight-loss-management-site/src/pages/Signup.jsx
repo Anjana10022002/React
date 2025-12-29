@@ -10,6 +10,7 @@ function Signup() {
   var [errorMessage, setErrorMessage] = useState("");
   var navigate = useNavigate();
 
+  
   function signupUser() {
     var user = {
       name: name,
